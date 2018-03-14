@@ -24,14 +24,6 @@ import numpy as np
 itchat.auto_login()
 ```
 
-    Getting uuid of QR code.
-    Downloading QR code.
-    Please scan the QR code to log in.
-    Please press confirm on your phone.
-    Loading the contact, this may take a little while.
-    Login successfully as incipient
-    
-
 
 ```python
 friends_wechat = itchat.get_friends(update = True)
@@ -86,7 +78,7 @@ friends.info()
     HeadImgUrl    199 non-null object
     dtypes: int64(2), object(6)
     memory usage: 12.5+ KB
-    
+
 
 ## 分析
 
@@ -101,7 +93,7 @@ plt.pie(friends.groupby('Sex',axis=0).count()['NickName'],
        labels = ['unknown','male','female'],
        autopct='%.1f%%'   # 设置饼图中显示百分比
        )
-plt.title('微信好友性别概况')
+plt.title('微信好友性别概况');
 ```
 
 
@@ -112,7 +104,7 @@ plt.title('微信好友性别概况')
 
 
 
-![png](output_11_1.png)
+![微信好友性别概况](https://github.com/incipient1/wechat_friends_analysis/blob/master/img/output_11_1.png)
 
 
 
@@ -139,8 +131,8 @@ ax.yaxis.set_major_formatter( yticks )
 for p in ax.patches:
     x=p.get_bbox().get_points()[:,0]
     y=p.get_bbox().get_points()[1,1]
-    ax.annotate('{:.1f}%, {:d}人'.format(100.*y/ncount,int(y)), (x.mean(), y), 
-            ha='center', va='bottom') 
+    ax.annotate('{:.1f}%, {:d}人'.format(100.*y/ncount,int(y)), (x.mean(), y),
+            ha='center', va='bottom')
 
 ax.yaxis.set_major_locator(matplotlib.ticker.LinearLocator(11))
 
@@ -159,8 +151,7 @@ ax.set_xticklabels(a,fontsize=12);
 ```
 
 
-![png](output_12_0.png)
-
+![微信好友性别概况](https://github.com/incipient1/wechat_friends_analysis/blob/master/img/output_12_0.png)
 
 上下两张图一对比，就能看出来为什么数据分析时都不推荐饼图了。<br>
 
@@ -210,7 +201,7 @@ friends.groupby('Province',axis=0).count().sort_values('NickName',ascending=Fals
 
 
 在[BDP](https://me.bdp.cn/home.html)中使用“本周新增订单分布”作为模板，得到下图。
-![联系人分布概况]()
+![联系人分布概况](https://github.com/incipient1/wechat_friends_analysis/blob/master/img/wechat_friends_location.png)
 
 ### 头像
 
@@ -223,7 +214,7 @@ folder = 'E:\\MySQL_data\\wechat_friends_img\\'
 os.path.exists(folder)
 j = -1 # i为1时，j为0，取出的是id=0的好友头像，保证图片名和id一致
 for i in friends_wechat:
-    
+
     img = folder + '\\image{:d}.jpg'.format(j)
     img_data = itchat.get_head_img(userName = i['UserName'])
     if os.path.exists(img) == False :
@@ -244,131 +235,18 @@ youtu = TencentYoutuyun.YouTu(appid, secret_id, secret_key, userid, end_point)
 
 
 
-
-    {'errorcode': 0,
-     'errormsg': 'OK',
-     'face': [{'age': 22,
-       'beauty': 87,
-       'expression': 76,
-       'face_id': '2489414698909367045',
-       'face_shape': {'face_profile': [{'x': 147, 'y': 375},
-         {'x': 152, 'y': 403},
-         {'x': 159, 'y': 429},
-         {'x': 169, 'y': 455},
-         {'x': 183, 'y': 479},
-         {'x': 203, 'y': 500},
-         {'x': 227, 'y': 517},
-         {'x': 252, 'y': 531},
-         {'x': 278, 'y': 543},
-         {'x': 304, 'y': 553},
-         {'x': 331, 'y': 554},
-         {'x': 357, 'y': 548},
-         {'x': 380, 'y': 535},
-         {'x': 404, 'y': 521},
-         {'x': 428, 'y': 505},
-         {'x': 449, 'y': 487},
-         {'x': 466, 'y': 464},
-         {'x': 478, 'y': 439},
-         {'x': 486, 'y': 413},
-         {'x': 491, 'y': 386},
-         {'x': 494, 'y': 361}],
-        'left_eye': [{'x': 173, 'y': 376},
-         {'x': 191, 'y': 378},
-         {'x': 210, 'y': 376},
-         {'x': 228, 'y': 371},
-         {'x': 245, 'y': 364},
-         {'x': 227, 'y': 355},
-         {'x': 206, 'y': 354},
-         {'x': 187, 'y': 361}],
-        'left_eyebrow': [{'x': 140, 'y': 322},
-         {'x': 172, 'y': 319},
-         {'x': 204, 'y': 320},
-         {'x': 236, 'y': 325},
-         {'x': 267, 'y': 329},
-         {'x': 243, 'y': 303},
-         {'x': 207, 'y': 296},
-         {'x': 170, 'y': 301}],
-        'mouth': [{'x': 260, 'y': 477},
-         {'x': 272, 'y': 498},
-         {'x': 289, 'y': 514},
-         {'x': 313, 'y': 519},
-         {'x': 337, 'y': 516},
-         {'x': 358, 'y': 502},
-         {'x': 372, 'y': 482},
-         {'x': 351, 'y': 472},
-         {'x': 328, 'y': 465},
-         {'x': 313, 'y': 468},
-         {'x': 297, 'y': 464},
-         {'x': 278, 'y': 469},
-         {'x': 276, 'y': 489},
-         {'x': 294, 'y': 497},
-         {'x': 313, 'y': 502},
-         {'x': 334, 'y': 499},
-         {'x': 354, 'y': 492},
-         {'x': 352, 'y': 478},
-         {'x': 333, 'y': 475},
-         {'x': 313, 'y': 475},
-         {'x': 295, 'y': 474},
-         {'x': 278, 'y': 475}],
-        'nose': [{'x': 312, 'y': 414},
-         {'x': 321, 'y': 364},
-         {'x': 313, 'y': 380},
-         {'x': 305, 'y': 397},
-         {'x': 298, 'y': 413},
-         {'x': 292, 'y': 434},
-         {'x': 307, 'y': 445},
-         {'x': 319, 'y': 446},
-         {'x': 331, 'y': 445},
-         {'x': 348, 'y': 433},
-         {'x': 338, 'y': 412},
-         {'x': 332, 'y': 396},
-         {'x': 327, 'y': 380}],
-        'right_eye': [{'x': 452, 'y': 363},
-         {'x': 438, 'y': 379},
-         {'x': 418, 'y': 385},
-         {'x': 398, 'y': 380},
-         {'x': 381, 'y': 367},
-         {'x': 395, 'y': 354},
-         {'x': 415, 'y': 350},
-         {'x': 436, 'y': 352}],
-        'right_eyebrow': [{'x': 482, 'y': 320},
-         {'x': 452, 'y': 319},
-         {'x': 422, 'y': 321},
-         {'x': 391, 'y': 327},
-         {'x': 361, 'y': 332},
-         {'x': 384, 'y': 305},
-         {'x': 419, 'y': 295},
-         {'x': 454, 'y': 298}]},
-       'gender': 99,
-       'glass': True,
-       'glasses': 1,
-       'hat': 0,
-       'height': 398.0,
-       'mask': 0,
-       'pitch': -4,
-       'roll': 1,
-       'width': 398.0,
-       'x': 108,
-       'y': 213,
-       'yaw': 0}],
-     'image_height': 640,
-     'image_width': 640,
-     'session_id': ''}
-
-
-
-
 ```python
 friends['ishuman'] = 0
+# 每次用这个方法得到新列时都会出现下面这一堆说明，但是也都能成功
 ```
 
-    E:\miniconda\envs\course_py35\lib\site-packages\ipykernel_launcher.py:1: SettingWithCopyWarning: 
+    E:\miniconda\envs\course_py35\lib\site-packages\ipykernel_launcher.py:1: SettingWithCopyWarning:
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
-    
+
     See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
       """Entry point for launching an IPython kernel.
-    
+
 
 
 ```python
@@ -405,9 +283,9 @@ ax.set_ylabel('人数')
 for p in ax.patches:
     x=p.get_bbox().get_points()[:,0]
     y=p.get_bbox().get_points()[1,1]
-    ax.annotate('{:d}人'.format(int(y)), (x.mean(), y), 
-            ha='center', va='bottom') 
-    
+    ax.annotate('{:d}人'.format(int(y)), (x.mean(), y),
+            ha='center', va='bottom')
+
 ax.yaxis.set_major_locator(matplotlib.ticker.LinearLocator(11))
 ax.set_ylim(0,80)
 xtick_labels = ['使用人像','不使用人像']
@@ -416,13 +294,7 @@ ax.set_xticklabels(xtick_labels,fontsize=12);
 
 
 
-
-    [Text(0,0,'使用人像'), Text(0,0,'不使用人像')]
-
-
-
-
-![png](output_24_1.png)
+![性别与使用头像](https://github.com/incipient1/wechat_friends_analysis/blob/master/img/output_24_1.png)
 
 
 结论：男、女在是否使用人脸作为头像上无明显差异<br>
@@ -459,8 +331,8 @@ ax.yaxis.set_major_formatter( yticks )
 for p in ax.patches:
     x=p.get_bbox().get_points()[:,0]
     y=p.get_bbox().get_points()[1,1]
-    ax.annotate('{:.1f}%,{:d}人'.format(100.*y/ncount,int(y)), (x.mean(), y), 
-            ha='center', va='bottom') 
+    ax.annotate('{:.1f}%,{:d}人'.format(100.*y/ncount,int(y)), (x.mean(), y),
+            ha='center', va='bottom')
 
 ax.yaxis.set_major_locator(matplotlib.ticker.LinearLocator(11))
 
@@ -479,7 +351,7 @@ ax.set_xticklabels(a,fontsize=12);
 ```
 
 
-![png](output_28_0.png)
+![性别与使用签名](https://github.com/incipient1/wechat_friends_analysis/blob/master/img/output_28_0.png)
 
 
 和男性相比，女性使用签名的比例更大
